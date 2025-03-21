@@ -1,5 +1,5 @@
 //File: hello.cpp
-//test
+//this is to test
 #include <iostream>
 using namespace std;
 
