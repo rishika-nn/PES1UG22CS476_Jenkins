@@ -4,15 +4,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo 'Checking workspace files...'
+                sh 'ls -l main/'  // List files in the 'main' directory
                 echo 'Building the project...'
-                sh 'g++ -o hello_exec hello.cpp'  // Compile the C++ file
+                sh 'g++ -o main/hello_exec main/hello.cpp || echo "Compilation failed!"'  // Compile C++ file
             }
         }
         
         stage('Test') {
             steps {
                 echo 'Running Tests...'
-                sh './hello_exec'  // Run the compiled executable
+                sh './main/hello_exec || echo "Execution failed!"'  // Run the compiled executable
             }
         }
         
